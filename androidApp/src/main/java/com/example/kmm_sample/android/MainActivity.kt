@@ -1,5 +1,6 @@
 package com.example.kmm_sample.android
 
+import TestClass
 import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
@@ -20,7 +21,7 @@ class MainActivity : ComponentActivity() {
                     modifier = Modifier.fillMaxSize(),
                     color = MaterialTheme.colors.background
                 ) {
-                    GreetingView("test")
+                    GreetingView(text = TestClass().hello())
                 }
             }
         }
