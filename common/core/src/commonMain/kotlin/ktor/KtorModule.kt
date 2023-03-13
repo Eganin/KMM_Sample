@@ -9,6 +9,7 @@ import io.ktor.serialization.kotlinx.json.*
 import kotlinx.serialization.json.Json
 import org.kodein.di.DI
 import org.kodein.di.bind
+import org.kodein.di.instance
 import org.kodein.di.singleton
 
 internal val ktorModule = DI.Module("ktorModule") {
@@ -22,11 +23,7 @@ internal val ktorModule = DI.Module("ktorModule") {
             install(DefaultRequest)
 
             install(ContentNegotiation) {
-                json(Json {
-                    isLenient = true
-                    prettyPrint = true
-                    ignoreUnknownKeys=true
-                })
+                json(instance())
             }
 
             install(HttpTimeout) {

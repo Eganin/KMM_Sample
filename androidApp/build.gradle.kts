@@ -18,7 +18,7 @@ android {
         compose = true
     }
     composeOptions {
-        kotlinCompilerExtensionVersion = "1.2.0"
+        kotlinCompilerExtensionVersion = "1.2.1"
     }
     packagingOptions {
         resources {
@@ -29,6 +29,13 @@ android {
         getByName("release") {
             isMinifyEnabled = false
         }
+    }
+    buildFeatures{
+        compose= true
+    }
+
+    composeOptions{
+        kotlinCompilerExtensionVersion = "1.2.0"
     }
     compileOptions {
         sourceCompatibility = JavaVersion.VERSION_1_8
