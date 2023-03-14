@@ -21,7 +21,8 @@ object PlatformSDK {
                 importAll(
                     platformModule,
                     coreModule,
-                    gamesModule
+                    gamesModule,
+                    authModule
                 )
             }.direct
         )
