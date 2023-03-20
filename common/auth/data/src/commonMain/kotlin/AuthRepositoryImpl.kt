@@ -1,16 +1,23 @@
 import ktor.KtorAuthRemoteDataSource
 import ktor.KtorLoginRequest
 import models.Token
+import settings.SettingsAuthDataSource
 
 class AuthRepositoryImpl(
-    val remoteDataSource: KtorAuthRemoteDataSource
+    val remoteDataSource: KtorAuthRemoteDataSource,
+    val cacheDataSource : SettingsAuthDataSource
 ) : AuthRepository {
     override suspend fun login(login: String, password: String): Token {
-        return remoteDataSource.performLogin(
+        val token =  remoteDataSource.performLogin(
             request = KtorLoginRequest(
                 login = login,
                 password = password
-            )
-        )
+            ))
+        cacheDataSource.saveToken(token=token.token)
+        return token
+    }
+
+    override fun isUserLoggedIn(): Boolean {
+        return cacheDataSource.fetchToken().isNotBlank()
     }
 }
