@@ -9,6 +9,7 @@ kotlin {
             dependencies {
                 implementation(project(":common:core"))
                 implementation(project(":common:core-compose"))
+                api(project(":common:umbrella-core"))
                 implementation(project(":common:core-utils"))
 
                 implementation(project(":common:games:data"))

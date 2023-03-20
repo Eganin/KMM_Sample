@@ -1,6 +1,5 @@
 package com.example.kmm_sample.android
 
-import PlatformSDK
 import android.app.Application
 import platform.PlatformConfiguration
 
