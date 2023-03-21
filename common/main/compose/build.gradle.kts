@@ -19,5 +19,12 @@ kotlin {
                 implementation(Dependencies.Other.Navigation.compose)
             }
         }
+
+        androidMain{
+            dependencies{
+                implementation(Dependencies.Image.Coil.core)
+                implementation(Dependencies.Image.Coil.compose)
+            }
+        }
     }
 }
