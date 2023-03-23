@@ -9,21 +9,13 @@ object Dependencies {
         const val noargs = "com.russhwolf:multiplatform-settings-no-arg:1.0.0-RC"
     }
 
-    object Image {
-        object Coil {
-            const val version = "2.2.2"
-            const val core = "io.coil-kt:coil:2.2.2"
-            const val compose = "io.coil-kt:coil-compose:2.2.2"
-        }
-    }
-
     object Kotlin {
         private const val version = "1.7.10"
         const val gradlePlugin = "org.jetbrains.kotlin:kotlin-gradle-plugin:$version"
 
         object Serialization {
-            const val gradlePlugin = "org.jetbrains.kotlin:kotlin-serialization:1.7.10"
-            const val serialization = "org.jetbrains.kotlinx:kotlinx-serialization-core:1.4.0"
+            const val gradlePlugin = "org.jetbrains.kotlin:kotlin-serialization:1.6.21"
+            const val serialization = "org.jetbrains.kotlinx:kotlinx-serialization-core:1.3.0"
         }
 
         object Coroutines {
@@ -33,7 +25,7 @@ object Dependencies {
     }
 
     object Compose {
-        private const val version = "1.3.1"
+        private const val version = "1.2.0-beta01"
         const val gradlePlugin = "org.jetbrains.compose:compose-gradle-plugin:$version"
     }
 

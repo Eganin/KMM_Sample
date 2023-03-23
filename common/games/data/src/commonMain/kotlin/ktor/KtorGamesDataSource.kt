@@ -6,6 +6,7 @@ import io.ktor.client.request.*
 import io.ktor.http.*
 import ktor.models.KtorSearchGame
 import ktor.models.KtorSearchRequest
+import models.CreateGameInfo
 import models.Game
 
 class KtorGamesDataSource(private val httpClient: HttpClient) {
@@ -30,5 +31,16 @@ class KtorGamesDataSource(private val httpClient: HttpClient) {
                 setBody(KtorSearchRequest(searchQuery = query))
             }
         }.body()
+    }
+
+    suspend fun createGame(token:String,info: CreateGameInfo){
+        httpClient.post {
+            header("Bearer-Authorization", token)
+
+            url {
+                path("games/create")
+                setBody(info)
+            }
+        }
     }
 }

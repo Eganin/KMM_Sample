@@ -2,6 +2,7 @@ plugins {
     id("multiplatform-setup")
     id("android-setup")
     kotlin("plugin.serialization")
+    id("com.squareup.sqldelight")
 }
 
 kotlin {
@@ -47,5 +48,14 @@ kotlin {
                 implementation(Dependencies.SqlDelight.desktop)
             }
         }
+    }
+}
+
+
+sqldelight {
+    database("Database") {
+        packageName = "com.example.kmm_sample"
+        schemaOutputDirectory = file("src/commonMain/sqldelight/databases/schema")
+        migrationOutputDirectory = file("src/commonMain/sqldelight/databases/migrations")
     }
 }

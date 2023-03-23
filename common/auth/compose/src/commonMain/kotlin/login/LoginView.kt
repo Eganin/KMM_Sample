@@ -3,23 +3,24 @@ package login
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.shape.RoundedCornerShape
-import androidx.compose.material.*
+import androidx.compose.material.Button
+import androidx.compose.material.ButtonDefaults
+import androidx.compose.material.Icon
+import androidx.compose.material.Text
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.outlined.Clear
 import androidx.compose.material.icons.outlined.Lock
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.text.font.FontWeight
-import androidx.compose.ui.text.input.PasswordVisualTransformation
-import androidx.compose.ui.text.input.VisualTransformation
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import login.models.LoginEvent
 import login.models.LoginViewState
 import theme.Theme
+import widgets.CommonTextField
 
 @Composable
 fun LoginView(
@@ -50,50 +51,17 @@ fun LoginView(
 
         Spacer(modifier = Modifier.height(50.dp))
 
-        TextField(
-            modifier = Modifier
-                .fillMaxWidth()
-                .height(56.dp),
-            value = state.email,
-            enabled = !state.isSending,
-            colors = TextFieldDefaults.textFieldColors(
-                backgroundColor = Color(0xFF1F2430),
-                textColor = Color(0XFF696C75),
-                focusedIndicatorColor = Color.Transparent,
-                unfocusedIndicatorColor = Color.Transparent,
-                cursorColor = Theme.colors.highlightTextColor
-            ),
-            placeholder = {
-                Text(
-                    text = "Your login",
-                    color = Theme.colors.hintTextColor
-                )
-            },
-            shape = RoundedCornerShape(10.dp),
-            onValueChange = {
-                eventHandler.invoke(LoginEvent.EmailChanged(it))
-            })
+        CommonTextField(text = state.email, hint = "Your login", enabled = !state.isSending) {
+            eventHandler.invoke(LoginEvent.EmailChanged(it))
+        }
+
         Spacer(modifier = Modifier.height(24.dp))
 
-        TextField(
-            modifier = Modifier
-                .fillMaxWidth()
-                .height(56.dp),
-            value = state.password,
+        CommonTextField(
+            text = state.password,
+            hint = "Your password",
             enabled = !state.isSending,
-            colors = TextFieldDefaults.textFieldColors(
-                backgroundColor = Color(0xFF1F2430),
-                textColor = Color(0XFF696C75),
-                focusedIndicatorColor = Color.Transparent,
-                unfocusedIndicatorColor = Color.Transparent,
-                cursorColor = Theme.colors.highlightTextColor
-            ),
-            placeholder = {
-                Text(
-                    text = "Your password",
-                    color = Theme.colors.hintTextColor
-                )
-            },
+            isSecure = true,
             trailingIcon = {
                 Icon(
                     modifier = Modifier.clickable {
@@ -107,19 +75,15 @@ fun LoginView(
                     contentDescription = null,
                     tint = Theme.colors.hintTextColor
                 )
-            },
-            visualTransformation = if (state.passwordHidden) {
-                PasswordVisualTransformation()
-            } else VisualTransformation.None,
-            shape = RoundedCornerShape(10.dp),
-            onValueChange = {
-                eventHandler.invoke(LoginEvent.PasswordChanged(it))
-            })
+            }
+        ) {
+            eventHandler.invoke(LoginEvent.PasswordChanged(it))
+        }
 
         Spacer(modifier = Modifier.height(30.dp))
 
         Row(modifier = Modifier.fillMaxWidth()) {
-            Spacer(modifier=Modifier.weight(1f))
+            Spacer(modifier = Modifier.weight(1f))
             Text(
                 text = "Forgot Password",
                 color = Theme.colors.primaryAction,

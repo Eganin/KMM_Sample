@@ -20,7 +20,7 @@ fun SearchScreen() {
         }
 
         when(viewAction.value){
-            is SearchAction.ShowGameDetail-> rootController.findRootController()
+            is SearchAction.ShowGameDetail -> rootController.findRootController()
                 .present(NavigationTree.Main.Game.name)
             null->{}
         }

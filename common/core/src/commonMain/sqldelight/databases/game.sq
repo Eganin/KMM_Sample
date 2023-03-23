@@ -1,0 +1,16 @@
+CREATE TABLE GAMEDB
+(
+    game_id TEXT NOT NULL,
+    game_title TEXT NOT NULL,
+    game_version TEXT NOT NULL,
+    game_size TEXT NOT NULL,
+
+    PRIMARY KEY (game_id)
+);
+
+insertGame:
+INSERT OR REPLACE INTO GAMEDB(game_id,game_title,game_version,game_size)
+VALUES (?,?,?,?);
+
+getAllGames:
+SELECT * FROM GAMEDB;

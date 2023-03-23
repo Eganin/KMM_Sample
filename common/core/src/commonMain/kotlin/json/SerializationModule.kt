@@ -10,7 +10,6 @@ internal val serializationModule = DI.Module("serializationModule"){
         Json {
             isLenient=true
             ignoreUnknownKeys=true
-            prettyPrint=true
         }
     }
 }

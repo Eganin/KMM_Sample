@@ -15,6 +15,7 @@ dependencyResolutionManagement {
 
 rootProject.name = "KMM_Sample"
 include(":androidApp")
+include(":desktop")
 include(":common:auth:data")
 include(":common:auth:api")
 include(":common:auth:presentation")
