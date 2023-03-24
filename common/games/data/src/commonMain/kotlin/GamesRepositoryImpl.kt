@@ -1,35 +1,49 @@
 import ktor.KtorGamesDataSource
-import ktor.models.mapToGame
+import mappers.GAMEDBToGameMapper
+import mappers.KtorSearchGameToGameMapper
 import models.CreateGameInfo
 import models.Game
 import sqldelight.SqlDelightGamesDataSource
 
-class GamesRepositoryImpl(
+internal class GamesRepositoryImpl(
     private val remoteDataSource: KtorGamesDataSource,
-    private val localDataSource: SqlDelightGamesDataSource
+    private val localDataSource: SqlDelightGamesDataSource,
+    private val gamedbToGameMapper: GAMEDBToGameMapper,
+    private val ktorSearchGameToGameMapper: KtorSearchGameToGameMapper
 ) : GamesRepository {
 
     override suspend fun fetchAllGames(): List<Game> {
         val localGames = localDataSource.fetchLocalGames().map {
-            Game(
-                gameId = it.game_id,
-                title = it.game_title
-            )
+            gamedbToGameMapper.map(source = it)
         }
 
-        return if (localGames.isNotEmpty()) {
-            localGames
-        } else {
+        println("EEE")
+        println("EEE $localGames")
+
+        return localGames.ifEmpty {
             val remote = remoteDataSource.fetchAllGames()
             remote.forEach {
                 localDataSource.insertGame(game = it)
             }
-            remote.map { it.mapToGame() }
+            localDataSource.fetchLocalGames().map {
+                gamedbToGameMapper.map(source = it)
+            }
         }
     }
 
     override suspend fun searchGame(query: String): List<Game> {
-        return remoteDataSource.searchGame(query).map { it.mapToGame() }
+        val localGames = localDataSource.fetchLocalQueryGames(query = query).map {
+            gamedbToGameMapper.map(source = it)
+        }
+        return localGames.ifEmpty {
+            val remote = remoteDataSource.searchGame(query = query)
+            remote.forEach {
+                localDataSource.insertGame(game = it)
+            }
+            localDataSource.fetchLocalQueryGames(query = query).map {
+                gamedbToGameMapper.map(source = it)
+            }
+        }
     }
 
     override suspend fun createGame(token: String, info: CreateGameInfo) {

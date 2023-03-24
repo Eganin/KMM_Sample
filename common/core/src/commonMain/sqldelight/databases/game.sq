@@ -14,3 +14,7 @@ VALUES (?,?,?,?);
 
 getAllGames:
 SELECT * FROM GAMEDB;
+
+getAllGamesOnRequest:
+SELECT * FROM GAMEDB
+WHERE game_title LIKE :query;

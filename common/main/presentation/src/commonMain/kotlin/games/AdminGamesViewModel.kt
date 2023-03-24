@@ -23,7 +23,7 @@ class AdminGamesViewModel : BaseSharedViewModel<AdminGamesViewState, AdminGamesA
     private fun fetchAllGames() {
         viewModelScope.launch {
             viewState = try {
-                val games = gamesRepository.searchGame("")
+                val games = gamesRepository.fetchAllGames()
                 viewState.copy(games = games)
             } catch (e: Exception) {
                 e.printStackTrace()

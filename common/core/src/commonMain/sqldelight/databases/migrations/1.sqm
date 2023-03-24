@@ -1,0 +1,9 @@
+CREATE TABLE GAMEDB
+(
+    game_id TEXT NOT NULL,
+    game_title TEXT NOT NULL,
+    game_version TEXT NOT NULL,
+    game_size TEXT NOT NULL,
+
+    PRIMARY KEY (game_id)
+);

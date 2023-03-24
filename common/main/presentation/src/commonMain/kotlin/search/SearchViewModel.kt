@@ -31,7 +31,11 @@ class SearchViewModel : BaseSharedViewModel<SearchViewState, SearchAction, Searc
             searchJob?.cancel()
             delay(500)
             viewState = try {
-                val gamesResponse = gamesRepository.searchGame(query = query)
+                val gamesResponse = if (query.isEmpty()) {
+                    gamesRepository.fetchAllGames()
+                } else {
+                    gamesRepository.searchGame(query = query)
+                }
                 viewState.copy(games = gamesResponse)
             } catch (e: Exception) {
                 viewState.copy(games = emptyList())

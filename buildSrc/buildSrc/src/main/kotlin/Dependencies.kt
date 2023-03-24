@@ -63,6 +63,15 @@ object Dependencies {
             const val material = "androidx.compose.material:material:$version"
             const val tooling = "androidx.compose.ui:ui-tooling:$version"
             const val icons = "androidx.compose.material:material-icons-core:$version"
+            const val iconsExtended = "androidx.compose.material:material-icons-extended:$version"
+        }
+    }
+
+    object Collections{
+
+        object Immutable{
+            private const val version = "0.3.5"
+            const val core = "org.jetbrains.kotlinx:kotlinx-collections-immutable:$version"
         }
     }
 
@@ -75,7 +84,7 @@ object Dependencies {
         }
 
         object Navigation {
-            private const val version = "1.0.0-beta15"
+            private const val version = "1.3.1"
             const val core = "io.github.alexgladkov:odyssey-core:$version"
             const val compose = "io.github.alexgladkov:odyssey-compose:$version"
         }

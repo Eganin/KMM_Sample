@@ -5,12 +5,16 @@ import databases.GAMEDB
 import ktor.models.KtorSearchGame
 import models.Game
 
-class SqlDelightGamesDataSource(
+internal class SqlDelightGamesDataSource(
     private val database: Database
 ) {
 
     fun fetchLocalGames(): List<GAMEDB> {
         return database.gameQueries.getAllGames().executeAsList()
+    }
+
+    fun fetchLocalQueryGames(query: String): List<GAMEDB>{
+        return database.gameQueries.getAllGamesOnRequest(query = "%$query%").executeAsList()
     }
 
     fun insertGame(game: KtorSearchGame) {

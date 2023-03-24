@@ -9,6 +9,8 @@ import ru.alexgladkov.odyssey.compose.base.Navigator
 import ru.alexgladkov.odyssey.compose.local.LocalRootController
 import ru.alexgladkov.odyssey.compose.navigation.RootComposeBuilder
 import ru.alexgladkov.odyssey.compose.navigation.modal_navigation.ModalNavigator
+import ru.alexgladkov.odyssey.compose.navigation.modal_navigation.configuration.DefaultModalConfiguration
+import ru.alexgladkov.odyssey.core.configuration.DisplayType
 import theme.AppTheme
 import theme.Theme
 import java.awt.BorderLayout
@@ -30,7 +32,12 @@ fun JFrame.setupThemedNavigation() {
                 val backgroundColor = Theme.colors.primaryBackground
                 rootController.backgroundColor = backgroundColor
 
-                ModalNavigator {
+                ModalNavigator(
+                    configuration = DefaultModalConfiguration(
+                        backgroundColor=Theme.colors.primaryBackground,
+                        displayType = DisplayType.EdgeToEdge
+                    )
+                ) {
                     Navigator(startParams = NavigationTree.Splash.SplashScreen.name)
                 }
             }
@@ -38,7 +45,7 @@ fun JFrame.setupThemedNavigation() {
     }
 
     contentPane.add(composePanel, BorderLayout.CENTER)
-    setSize(800, 600)
+    setSize(800, 650)
     setLocationRelativeTo(null)
     isVisible = true
 }

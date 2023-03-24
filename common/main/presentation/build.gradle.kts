@@ -12,6 +12,7 @@ kotlin {
                 api(project(":common:games:api"))
                 api(project(":common:core"))
                 implementation(Dependencies.Other.ViewModel.core)
+                implementation(Dependencies.Collections.Immutable.core)
             }
         }
     }

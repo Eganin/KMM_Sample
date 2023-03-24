@@ -9,7 +9,7 @@ import ktor.models.KtorSearchRequest
 import models.CreateGameInfo
 import models.Game
 
-class KtorGamesDataSource(private val httpClient: HttpClient) {
+internal class KtorGamesDataSource(private val httpClient: HttpClient) {
 
     suspend fun fetchAllGames(): List<KtorSearchGame> {
         return httpClient.post {

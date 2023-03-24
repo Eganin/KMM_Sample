@@ -16,9 +16,9 @@ import home.models.HomeViewState
 import theme.Theme
 
 @Composable
-fun HomeView(viewState: HomeViewState, eventHandler: (HomeEvent) -> Unit) {
+fun HomeView(viewState: HomeViewState,modifier: Modifier=Modifier, eventHandler: (HomeEvent) -> Unit) {
     Row(
-        modifier = Modifier
+        modifier = modifier
             .clickable {
                 eventHandler.invoke(HomeEvent.UserProfileClicked)
             }

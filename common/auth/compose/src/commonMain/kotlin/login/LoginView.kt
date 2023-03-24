@@ -51,7 +51,11 @@ fun LoginView(
 
         Spacer(modifier = Modifier.height(50.dp))
 
-        CommonTextField(text = state.email, hint = "Your login", enabled = !state.isSending) {
+        CommonTextField(
+            text = state.email,
+            hint = "Your login",
+            enabled = !state.isSending
+        ) {
             eventHandler.invoke(LoginEvent.EmailChanged(it))
         }
 
@@ -61,7 +65,7 @@ fun LoginView(
             text = state.password,
             hint = "Your password",
             enabled = !state.isSending,
-            isSecure = true,
+            isSecure = state.passwordHidden,
             trailingIcon = {
                 Icon(
                     modifier = Modifier.clickable {

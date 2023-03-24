@@ -20,8 +20,8 @@ fun LoginScreen(modifier: Modifier = Modifier) {
         val state = viewModel.viewStates().observeAsState()
         val action = viewModel.viewActions().observeAsState()
 
-        LoginView(state = state.value, modifier = modifier) {
-            viewModel.obtainEvent(viewEvent = it)
+        LoginView(state = state.value, modifier = modifier) {event->
+            viewModel.obtainEvent(viewEvent = event)
         }
 
         when (action.value) {
@@ -32,7 +32,7 @@ fun LoginScreen(modifier: Modifier = Modifier) {
                 )
             is LoginAction.OpenRegistrationScreen -> rootController.push(NavigationTree.Auth.Register.name)
             is LoginAction.OpenForgotPasswordScreen -> rootController.push(NavigationTree.Auth.Forgot.name)
-            else -> {}
+            null -> {}
         }
     }
 }
