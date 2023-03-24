@@ -1,6 +1,5 @@
 import ktor.KtorGamesDataSource
 import mappers.GAMEDBToGameMapper
-import mappers.KtorSearchGameToGameMapper
 import models.CreateGameInfo
 import models.Game
 import sqldelight.SqlDelightGamesDataSource
@@ -8,17 +7,13 @@ import sqldelight.SqlDelightGamesDataSource
 internal class GamesRepositoryImpl(
     private val remoteDataSource: KtorGamesDataSource,
     private val localDataSource: SqlDelightGamesDataSource,
-    private val gamedbToGameMapper: GAMEDBToGameMapper,
-    private val ktorSearchGameToGameMapper: KtorSearchGameToGameMapper
+    private val gamedbToGameMapper: GAMEDBToGameMapper
 ) : GamesRepository {
 
     override suspend fun fetchAllGames(): List<Game> {
         val localGames = localDataSource.fetchLocalGames().map {
             gamedbToGameMapper.map(source = it)
         }
-
-        println("EEE")
-        println("EEE $localGames")
 
         return localGames.ifEmpty {
             val remote = remoteDataSource.fetchAllGames()

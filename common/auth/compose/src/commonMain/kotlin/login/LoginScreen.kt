@@ -1,9 +1,11 @@
 package login
 
+import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import com.adeo.kviewmodel.compose.observeAsState
 import com.adeo.kviewmodel.odyssey.StoredViewModel
+import di.Inject
 import login.models.LoginAction
 import navigation.NavigationTree
 import ru.alexgladkov.odyssey.compose.extensions.present
@@ -12,15 +14,19 @@ import ru.alexgladkov.odyssey.compose.local.LocalRootController
 import ru.alexgladkov.odyssey.core.LaunchFlag
 
 @Composable
-fun LoginScreen(modifier: Modifier = Modifier) {
+fun LoginScreen() {
 
     val rootController = LocalRootController.current
 
-    StoredViewModel(factory = { LoginViewModel() }) { viewModel ->
+    StoredViewModel(factory = {
+        LoginViewModel(
+            authRepository = Inject.instance()
+        )
+    }) { viewModel ->
         val state = viewModel.viewStates().observeAsState()
         val action = viewModel.viewActions().observeAsState()
 
-        LoginView(state = state.value, modifier = modifier) {event->
+        LoginView(state = state.value, modifier = Modifier.fillMaxSize()) { event ->
             viewModel.obtainEvent(viewEvent = event)
         }
 

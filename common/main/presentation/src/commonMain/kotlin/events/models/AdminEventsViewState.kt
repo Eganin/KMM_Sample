@@ -1,5 +1,8 @@
 package events.models
 
+import kotlinx.collections.immutable.ImmutableList
+import kotlinx.collections.immutable.persistentListOf
+
 data class AdminEventsViewState(
-    val events : List<String> = emptyList()
+    val events : ImmutableList<String> = persistentListOf()
 )

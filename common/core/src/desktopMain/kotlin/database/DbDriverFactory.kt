@@ -1,6 +1,5 @@
 package database
 
-import com.example.kmm_sample.Database
 import com.squareup.sqldelight.db.SqlDriver
 import com.squareup.sqldelight.sqlite.driver.JdbcSqliteDriver
 import platform.PlatformConfiguration

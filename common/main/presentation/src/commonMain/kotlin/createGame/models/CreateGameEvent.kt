@@ -1,4 +1,4 @@
-package createtGame.models
+package createGame.models
 
 sealed class CreateGameEvent{
     data class TitleChanged(val value: String): CreateGameEvent()

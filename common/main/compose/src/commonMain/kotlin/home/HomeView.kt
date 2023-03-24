@@ -22,17 +22,8 @@ fun HomeView(viewState: HomeViewState,modifier: Modifier=Modifier, eventHandler:
             .clickable {
                 eventHandler.invoke(HomeEvent.UserProfileClicked)
             }
-            .fillMaxSize()
             .padding(start = 24.dp, end = 24.dp, top = 26.dp)
     ) {
-//        AsyncImage(
-//            model = viewState.avatarUrl,
-//            contentDescription = null,
-//            modifier = Modifier
-//                .clip(RoundedCornerShape(28.dp))
-//                .size(56.dp),
-//            contentScale = ContentScale.FillBounds,
-//        )
 
         Column(modifier = Modifier.padding(start = 20.dp)) {
             Text(

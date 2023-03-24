@@ -3,15 +3,17 @@ package search
 import GamesRepository
 import com.adeo.kviewmodel.BaseSharedViewModel
 import di.Inject
+import kotlinx.collections.immutable.persistentListOf
+import kotlinx.collections.immutable.toImmutableList
 import kotlinx.coroutines.Job
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.launch
 
-class SearchViewModel : BaseSharedViewModel<SearchViewState, SearchAction, SearchEvent>(
+class SearchViewModel(
+    private val gamesRepository: GamesRepository
+) : BaseSharedViewModel<SearchViewState, SearchAction, SearchEvent>(
     initialState = SearchViewState()
 ) {
-
-    private val gamesRepository: GamesRepository = Inject.instance()
     private var searchJob: Job? = null
 
     override fun obtainEvent(viewEvent: SearchEvent) {
@@ -36,9 +38,9 @@ class SearchViewModel : BaseSharedViewModel<SearchViewState, SearchAction, Searc
                 } else {
                     gamesRepository.searchGame(query = query)
                 }
-                viewState.copy(games = gamesResponse)
+                viewState.copy(games = gamesResponse.toImmutableList())
             } catch (e: Exception) {
-                viewState.copy(games = emptyList())
+                viewState.copy(games = persistentListOf())
             }
         }
     }

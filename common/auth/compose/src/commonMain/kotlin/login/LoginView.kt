@@ -30,7 +30,6 @@ fun LoginView(
 ) {
     Column(
         modifier = modifier
-            .fillMaxSize()
             .padding(30.dp),
         horizontalAlignment = Alignment.CenterHorizontally
     ) {

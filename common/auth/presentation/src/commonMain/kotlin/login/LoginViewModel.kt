@@ -8,11 +8,11 @@ import login.models.LoginAction
 import login.models.LoginEvent
 import login.models.LoginViewState
 
-class LoginViewModel : BaseSharedViewModel<LoginViewState, LoginAction, LoginEvent>(
+class LoginViewModel(
+    private val authRepository: AuthRepository
+) : BaseSharedViewModel<LoginViewState, LoginAction, LoginEvent>(
     initialState = LoginViewState()
 ) {
-
-    private val authRepository: AuthRepository = Inject.instance()
 
     init {
         checkUserLoggedIn()

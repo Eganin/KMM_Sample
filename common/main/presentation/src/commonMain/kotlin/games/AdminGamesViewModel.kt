@@ -2,17 +2,18 @@ package games
 
 import GamesRepository
 import com.adeo.kviewmodel.BaseSharedViewModel
-import di.Inject
 import games.models.AdminGamesAction
 import games.models.AdminGamesEvent
 import games.models.AdminGamesViewState
+import kotlinx.collections.immutable.persistentListOf
+import kotlinx.collections.immutable.toImmutableList
 import kotlinx.coroutines.launch
 
-class AdminGamesViewModel : BaseSharedViewModel<AdminGamesViewState, AdminGamesAction, AdminGamesEvent>(
+class AdminGamesViewModel(
+    private val gamesRepository: GamesRepository
+) : BaseSharedViewModel<AdminGamesViewState, AdminGamesAction, AdminGamesEvent>(
     initialState = AdminGamesViewState()
 ) {
-    private val gamesRepository: GamesRepository = Inject.instance()
-
     override fun obtainEvent(viewEvent: AdminGamesEvent) {
         when (viewEvent) {
             is AdminGamesEvent.AddGameClicked -> viewAction = AdminGamesAction.ShowAddGame
@@ -24,10 +25,10 @@ class AdminGamesViewModel : BaseSharedViewModel<AdminGamesViewState, AdminGamesA
         viewModelScope.launch {
             viewState = try {
                 val games = gamesRepository.fetchAllGames()
-                viewState.copy(games = games)
+                viewState.copy(games = games.toImmutableList())
             } catch (e: Exception) {
                 e.printStackTrace()
-                viewState.copy(games = emptyList())
+                viewState.copy(games = persistentListOf())
             }
         }
     }
