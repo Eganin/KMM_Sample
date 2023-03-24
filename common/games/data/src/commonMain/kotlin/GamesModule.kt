@@ -6,7 +6,7 @@ import sqldelight.SqlDelightGamesDataSource
 
 val gamesModule = DI.Module("gamesModule"){
     bind<GamesRepository>() with singleton {
-        GamesRepositoryImpl(instance(),instance(),instance(),instance())
+        GamesRepositoryImpl(instance(),instance(),instance())
     }
 
     bind<KtorGamesDataSource>() with singleton {

@@ -4,6 +4,7 @@ import androidx.compose.foundation.layout.*
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
+import com.example.kmm_sample.core.Res
 import createGame.models.CreateGameEvent
 import createGame.models.CreateGameViewState
 import widgets.ActionButton
@@ -18,7 +19,7 @@ fun CreateGameView(
     Column(modifier = modifier.padding(16.dp)) {
         CommonTextField(
             text = viewState.title,
-            hint = "Game title",
+            hint = Res.string.game_title_hint,
             enabled = !viewState.isSending
         ) {
             eventHandler.invoke(CreateGameEvent.TitleChanged(it))
@@ -28,7 +29,7 @@ fun CreateGameView(
 
         CommonTextField(
             text = viewState.description,
-            hint = "Game description",
+            hint = Res.string.game_description_hint,
             enabled = !viewState.isSending
         ) {
             eventHandler.invoke(CreateGameEvent.DescriptionChanged(it))
@@ -38,7 +39,7 @@ fun CreateGameView(
 
         CommonTextField(
             text = viewState.version,
-            hint = "Game version",
+            hint = Res.string.game_version_hint,
             enabled = !viewState.isSending
         ) {
             eventHandler.invoke(CreateGameEvent.VersionChanged(it))
@@ -48,7 +49,7 @@ fun CreateGameView(
 
         CommonTextField(
             text = viewState.size,
-            hint = "Game size",
+            hint = Res.string.game_size_hint,
             enabled = !viewState.isSending
         ) {
             eventHandler.invoke(CreateGameEvent.SizeChanged(it))
@@ -57,7 +58,7 @@ fun CreateGameView(
         Spacer(modifier = Modifier.height(16.dp))
 
         ActionButton(
-            title = "Save Changes",
+            title = Res.string.save_changes_button,
             enabled = !viewState.isSending
         ) {
             eventHandler.invoke(CreateGameEvent.SubmitChanges)

@@ -12,6 +12,7 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import com.example.kmm_sample.core.Res
 import games.models.AdminGamesEvent
 import games.models.AdminGamesViewState
 import theme.Theme
@@ -25,7 +26,7 @@ fun AdminGamesView(
     Column(modifier=modifier.fillMaxSize()) {
         Row(modifier = Modifier.padding(16.dp)) {
             Text(
-                text = "Games List",
+                text = Res.string.game_list,
                 fontSize = 28.sp,
                 color = Theme.colors.secondaryTextColor
             )

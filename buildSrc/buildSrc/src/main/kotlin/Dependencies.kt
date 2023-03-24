@@ -75,6 +75,13 @@ object Dependencies {
         }
     }
 
+    object Resources{
+        object Libres{
+            private const val version = "1.1.5"
+            const val gradlePlugin = "io.github.skeptick.libres:gradle-plugin:$version"
+        }
+    }
+
     object Other {
         object ViewModel {
             private const val version = "0.7.1"

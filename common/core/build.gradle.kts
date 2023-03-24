@@ -3,6 +3,7 @@ plugins {
     id("android-setup")
     kotlin("plugin.serialization")
     id("com.squareup.sqldelight")
+    id("io.github.skeptick.libres")
 }
 
 kotlin {
@@ -25,6 +26,8 @@ kotlin {
                 api(Dependencies.Kodein.core)
 
                 api(Dependencies.SqlDelight.core)
+
+
             }
         }
 
@@ -58,4 +61,8 @@ sqldelight {
         schemaOutputDirectory = file("src/commonMain/sqldelight/databases/schema")
         migrationOutputDirectory = file("src/commonMain/sqldelight/databases/migrations")
     }
+}
+
+libres {
+
 }

@@ -17,6 +17,7 @@ import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import com.example.kmm_sample.core.Res
 import login.models.LoginEvent
 import login.models.LoginViewState
 import theme.Theme
@@ -34,14 +35,14 @@ fun LoginView(
         horizontalAlignment = Alignment.CenterHorizontally
     ) {
         Text(
-            text = "Login Now",
+            text = Res.string.login_title,
             color = Theme.colors.thirdTextColor,
             fontSize = 24.sp,
             fontWeight = FontWeight.Bold
         )
 
         Text(
-            text = "Welcome back to PlayZone! Enter your email addres and your password to enjoy the latest features of PlayZone",
+            text = Res.string.welcome_playzone,
             modifier = Modifier.padding(top = 15.dp),
             fontSize = 14.sp,
             textAlign = TextAlign.Center,
@@ -52,7 +53,7 @@ fun LoginView(
 
         CommonTextField(
             text = state.email,
-            hint = "Your login",
+            hint = Res.string.login_hint,
             enabled = !state.isSending
         ) {
             eventHandler.invoke(LoginEvent.EmailChanged(it))
@@ -62,7 +63,7 @@ fun LoginView(
 
         CommonTextField(
             text = state.password,
-            hint = "Your password",
+            hint = Res.string.password_hint,
             enabled = !state.isSending,
             isSecure = state.passwordHidden,
             trailingIcon = {
@@ -75,7 +76,7 @@ fun LoginView(
                     } else {
                         Icons.Outlined.Lock
                     },
-                    contentDescription = null,
+                    contentDescription = Res.string.secure_icon_content_description,
                     tint = Theme.colors.hintTextColor
                 )
             }
@@ -88,7 +89,7 @@ fun LoginView(
         Row(modifier = Modifier.fillMaxWidth()) {
             Spacer(modifier = Modifier.weight(1f))
             Text(
-                text = "Forgot Password",
+                text = Res.string.forgot_password,
                 color = Theme.colors.primaryAction,
                 fontSize = 12.sp,
                 modifier = Modifier.clickable {
@@ -111,7 +112,7 @@ fun LoginView(
                 eventHandler.invoke(LoginEvent.LoginClick)
             }) {
             Text(
-                text = "Login Now",
+                text = Res.string.login_title,
                 color = Theme.colors.primaryTextColor,
                 fontSize = 16.sp,
                 fontWeight = FontWeight.Bold

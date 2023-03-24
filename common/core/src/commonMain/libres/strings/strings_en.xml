@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="login_title">Login Now</string>
+    <string name="login_hint">Your login</string>
+    <string name="password_hint">Your password</string>
+    <string name="game_list">Games List</string>
+    <string name="game_title_hint">Game title</string>
+    <string name="game_description_hint">Game description</string>
+    <string name="game_version_hint">Game version</string>
+    <string name="game_size_hint">Game size</string>
+    <string name="save_changes_button">Save Changes</string>
+    <string name="home_tab_title">Home</string>
+    <string name="search_tab_title">Search</string>
+    <string name="events_tab_title">Events</string>
+    <string name="videos_tab_title">Videos</string>
+    <string name="games_tab_title">Games</string>
+    <string name="search_game_placeholder">Search Game</string>
+    <string name="secure_icon_content_description">This is icon hides your password</string>
+    <string name="forgot_password">Forgot password</string>
+    <string name="welcome_playzone">Welcome back to PlayZone! Enter your email addres and your password to enjoy the latest features of PlayZone</string>
+    <string name="string_with_arguments">Hello ${name}!</string>
+</resources>

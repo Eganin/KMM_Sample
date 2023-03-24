@@ -17,6 +17,8 @@ kotlin {
 
                 implementation(Dependencies.Other.Navigation.core)
                 implementation(Dependencies.Other.Navigation.compose)
+
+                implementation(Dependencies.Collections.Immutable.core)
             }
         }
     }

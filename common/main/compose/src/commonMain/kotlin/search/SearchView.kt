@@ -12,6 +12,7 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
+import com.example.kmm_sample.core.Res
 import theme.Theme
 
 @Composable
@@ -32,7 +33,7 @@ fun SearchView(viewState: SearchViewState, eventHandler: (SearchEvent) -> Unit) 
             ),
             placeholder = {
                 Text(
-                    text = "Search Game",
+                    text = Res.string.search_game_placeholder,
                     color = Theme.colors.hintTextColor
                 )
             },
@@ -47,7 +48,8 @@ fun SearchView(viewState: SearchViewState, eventHandler: (SearchEvent) -> Unit) 
             viewState.games.forEach {
                 item {
                     Text(
-                        text = it.title, color = Theme.colors.secondaryTextColor,
+                        text = it.title,
+                        color = Theme.colors.secondaryTextColor,
                         fontWeight = FontWeight.Medium,
                         modifier = Modifier.clickable {
                             eventHandler.invoke(SearchEvent.GameClicked)

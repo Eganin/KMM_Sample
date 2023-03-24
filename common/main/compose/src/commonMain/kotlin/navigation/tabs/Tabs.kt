@@ -4,6 +4,7 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.sp
+import com.example.kmm_sample.core.Res
 import ru.alexgladkov.odyssey.compose.navigation.bottom_bar_navigation.TabConfiguration
 import ru.alexgladkov.odyssey.compose.navigation.bottom_bar_navigation.TabItem
 import theme.Theme
@@ -13,7 +14,7 @@ class HomeTab : TabItem() {
         @Composable
         get() {
             return TabConfiguration(
-                title = "Home",
+                title = Res.string.home_tab_title,
                 selectedColor = Theme.colors.primaryAction,
                 unselectedColor = Theme.colors.hintTextColor,
                 titleStyle = TextStyle(
@@ -29,7 +30,7 @@ class SearchTab : TabItem() {
         @Composable
         get() {
             return TabConfiguration(
-                title = "Search",
+                title = Res.string.search_tab_title,
                 selectedColor = Theme.colors.primaryAction,
                 unselectedColor = Theme.colors.hintTextColor,
                 titleStyle = TextStyle(
@@ -45,7 +46,7 @@ class EventsTab : TabItem() {
         @Composable
         get() {
             return TabConfiguration(
-                title = "Events",
+                title = Res.string.events_tab_title,
                 selectedColor = Theme.colors.primaryAction,
                 unselectedColor = Theme.colors.hintTextColor,
                 titleStyle = TextStyle(
@@ -61,7 +62,7 @@ class VideosTab : TabItem() {
         @Composable
         get() {
             return TabConfiguration(
-                title = "Videos",
+                title = Res.string.videos_tab_title,
                 selectedColor = Theme.colors.primaryAction,
                 unselectedColor = Theme.colors.hintTextColor,
                 titleStyle = TextStyle(
@@ -77,7 +78,7 @@ class GamesTab : TabItem() {
         @Composable
         get() {
             return TabConfiguration(
-                title = "Games",
+                title = Res.string.games_tab_title,
                 selectedColor = Theme.colors.primaryAction,
                 unselectedColor = Theme.colors.hintTextColor,
                 titleStyle = TextStyle(
